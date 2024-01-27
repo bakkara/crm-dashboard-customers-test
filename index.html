@@ -99,6 +99,7 @@
             </div>
         </aside>
         <main>
+            <div class="main-container">
             <h2 class="greetings">Hello Evano 👋🏼,</h2>
             <div class="main-wrap">
                 <div class="table-header">
@@ -106,23 +107,31 @@
                         <h3 class="customers-title">All Customers</h3>
                         <button class="active-text" onclick="toggleMembers()">Active Members</button>
                     </div>
-                    <input type="text" class="search" oninput="updateTable()">
+                    <div class="search-wrap">
+                        <input type="text" class="search" placeholder="Search" oninput="updateTable()">
+                        <svg  width="24" height="24" class="search-icon">
+                            <use href="./img/icons.svg#icon-search"></use>
+                        </svg> 
+                    </div>
                 </div>
                 <div class="table">
                     <table id="customers">
-                        <thead>
-                      <tr>
-                        <th>Customer Name</th>
-                        <th>Company</th>
-                        <th>Phone Number</th>
-                        <th>Email</th>
-                        <th>Country</th>
-                        <th>Status</th>
-                      </tr></thead>
-                      <tbody></tbody>
+                        <thead class="customers-thead">
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Company</th>
+                            <th>Phone Number</th>
+                            <th>Email</th>
+                            <th>Country</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody class="customers-tbody">
+                        </tbody>
                     </table>
                 </div>
             </div>
+        </div>
         </main>
     </div>
 
