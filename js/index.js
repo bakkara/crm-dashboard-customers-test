@@ -5,19 +5,7 @@ function toggleMembers() {
   updateTable();
 }
 
-function searchByName() {
-    const searchValue = $('.search').val().toLowerCase();
-    const filterStatus = showAllMembers ? null : 'Active';
-  
-    const filteredCustomers = customers.filter(customer =>
-      (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) &&
-      (customer.name.toLowerCase().includes(searchValue))
-    );
-  
-    addRowsToTable(filteredCustomers);
-  }
-
-  function updateTable() {
+ function updateTable() {
     const filterStatus = showAllMembers ? null : 'Active';
     const searchValue = $('.search').val().toLowerCase();
   
@@ -36,11 +24,11 @@ function searchByName() {
     filteredCustomers.forEach(customer => {
       const row = $('<tr>');
       for (const key in customer) {
-        let cellContent = customer[key];
+        let content = customer[key];
         if (key.toLowerCase() === 'status') {
-          cellContent = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
+          content = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
         }
-        row.append($('<td>').html(cellContent));
+        row.append($('<td>').html(content));
       }
       table.append(row);
     });
