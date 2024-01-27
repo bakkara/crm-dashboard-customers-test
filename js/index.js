@@ -5,30 +5,46 @@ function toggleMembers() {
   updateTable();
 }
 
-function updateTable() {
-  const filterStatus = showAllMembers ? null : 'Active';
-  addRowsToTable(filterStatus);
-}
+function searchByName() {
+    const searchValue = $('.search').val().toLowerCase();
+    const filterStatus = showAllMembers ? null : 'Active';
+  
+    const filteredCustomers = customers.filter(customer =>
+      (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) &&
+      (customer.name.toLowerCase().includes(searchValue))
+    );
+  
+    addRowsToTable(filteredCustomers);
+  }
 
-function addRowsToTable(filterStatus) {
-  const table = $('#customers');
-  table.find('tbody').empty();
-  customers.forEach(customer => {
-    if (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) {
+  function updateTable() {
+    const filterStatus = showAllMembers ? null : 'Active';
+    const searchValue = $('.search').val().toLowerCase();
+  
+    const filteredCustomers = customers.filter(customer =>
+      (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) &&
+      (customer.name.toLowerCase().includes(searchValue))
+    );
+  
+    addRowsToTable(filteredCustomers);
+  }
+
+  function addRowsToTable(filteredCustomers) {
+    const table = $('#customers');
+    table.find('tbody').empty();
+    
+    filteredCustomers.forEach(customer => {
       const row = $('<tr>');
       for (const key in customer) {
+        let cellContent = customer[key];
         if (key.toLowerCase() === 'status') {
-            // Додаємо клас відповідно до статусу
-            cellContent = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
-          } else {
-            cellContent = customer[key];
-          }
+          cellContent = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
+        }
         row.append($('<td>').html(cellContent));
       }
       table.append(row);
-    }
-  });
-}
+    });
+  }
 
 $(document).ready(() => {
   updateTable();
