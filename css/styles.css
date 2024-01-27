@@ -205,3 +205,19 @@ img {
     line-height: normal;
     letter-spacing: 0.12px;
 }
+
+.status-div {
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+}
+
+.status-div.active {
+  background-color: green;
+}
+
+.status-div.inactive {
+  background-color: red;
+}
