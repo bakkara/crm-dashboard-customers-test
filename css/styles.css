@@ -223,7 +223,7 @@ img {
   background: #FFF;
   box-shadow: 0 10px 60px rgba(226,236,249,0.5);
   border-radius: 26px;
-  max-width: 968px;
+  width: 968px;
   padding: 30px 44px 40px 38px;
 }
 .table-header{
@@ -285,12 +285,12 @@ img {
 
 .customers-thead th {
   color: #B5B7C0;
-  padding: 0 10px 14px 0;
   text-align: left;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.14px;
   border-bottom: 1px solid #EEE;
+  padding: 0 52px 14px 0;
 }
 
 .customers-tbody td {
@@ -300,6 +300,7 @@ img {
   letter-spacing: -0.14px;
   padding: 24px 30px 24px 0;
   border-bottom: 1px solid #EEE;
+  text-wrap: nowrap;
 }
 
 .status-div {
