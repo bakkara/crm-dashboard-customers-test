@@ -1,142 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CRM Dashboard Customers</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
-        integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-        <link rel="icon" type="image/x-icon" href="./img/favicon.png">
-        <link rel="stylesheet" href="./css/styles.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/1.1.0/modern-normalize.min.css"
+      integrity="sha512-wpPYUAdjBVSE4KJnH1VR1HeZfpl1ub8YT/NKx4PuQ5NmX2tKuGu6U/JRp5y+Y8XG2tV+wKQpNHVUX03MfMFn9Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="icon" type="image/x-icon" href="./img/favicon.png" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <aside class="aside-container">
-            <a href="#" class="logo-link link"> 
-                <svg  width="37" height="37" class="header-icon">
-                    <use href="./img/icons.svg#icon-logo"></use>
-                </svg>  
-                <h1 class="title">Dashboard<span class="version">v.01</span> </h1>
-                
-            </a>
-            <nav class="nav">
-                <ul class="link-list list">
-                    <li class="link-list-items">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons">
-                                <use href="./img/icons.svg#icon-key"></use>
-                            </svg>
-                            <p class="nav-text">Dashboard</p>
-                            <svg width="16" height="16" class="arrow-icons">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="link-list-items">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons">
-                                <use href="./img/icons.svg#icon-d-square"></use>
-                            </svg>
-                            <p class="nav-text">Product</p>
-                            <svg width="16" height="16" class="arrow-icons">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="link-list-items active">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons active">
-                                <use href="./img/icons.svg#icon-user"></use>
-                            </svg>
-                            <p class="nav-text active">Customers</p>
-                            <svg width="16" height="16" class="arrow-icons active">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="link-list-items">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons">
-                                <use href="./img/icons.svg#icon-wallet"></use>
-                            </svg>
-                            <p class="nav-text">Income</p>
-                            <svg width="16" height="16" class="arrow-icons">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="link-list-items">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons">
-                                <use href="./img/icons.svg#icon-promote"></use>
-                            </svg>
-                            <p class="nav-text">Promote</p>
-                            <svg width="16" height="16" class="arrow-icons">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="link-list-items">
-                        <a href="#" class="nav-link link">
-                            <svg width="24" height="24" class="main-icons">
-                                <use href="./img/icons.svg#icon-help"></use>
-                            </svg>
-                            <p class="nav-text">Help</p>
-                            <svg width="16" height="16" class="arrow-icons">
-                                <use href="./img/icons.svg#icon-arrow-right"></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <div class="user">
-                <img src="./img/avatar.png" alt="avatar" class="avatar">
-                <div class="user-wrap">
-                    <p class="user-name">Evano</p>
-                    <p class="user-job">Project Manager</p>
-                </div>
-            </div>
-        </aside>
-        <main>
-            <div class="main-container">
-            <h2 class="greetings">Hello Evano 👋🏼,</h2>
-            <div class="main-wrap">
-                <div class="table-header">
-                    <div class="table-name-wrap">
-                        <h3 class="customers-title">All Customers</h3>
-                        <button class="active-text" onclick="toggleMembers()">Active Members</button>
-                    </div>
-                    <div class="search-wrap">
-                        <input type="text" class="search" placeholder="Search" oninput="updateTable()">
-                        <svg  width="24" height="24" class="search-icon">
-                            <use href="./img/icons.svg#icon-search"></use>
-                        </svg> 
-                    </div>
-                </div>
-                <div class="table">
-                    <table id="customers">
-                        <thead class="customers-thead">
-                        <tr>
-                            <th>Customer Name</th>
-                            <th>Company</th>
-                            <th>Phone Number</th>
-                            <th>Email</th>
-                            <th>Country</th>
-                            <th>Status</th>
-                        </tr>
-                        </thead>
-                        <tbody class="customers-tbody">
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+      <aside class="aside-container">
+        <a href="#" class="logo-link link">
+          <svg width="37" height="37" class="header-icon">
+            <use href="./img/icons.svg#icon-logo"></use>
+          </svg>
+          <h1 class="title">Dashboard<span class="version">v.01</span></h1>
+        </a>
+        <nav class="nav">
+          <ul class="link-list list">
+            <li class="link-list-items">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons">
+                  <use href="./img/icons.svg#icon-key"></use>
+                </svg>
+                <p class="nav-text">Dashboard</p>
+                <svg width="16" height="16" class="arrow-icons">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="link-list-items">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons">
+                  <use href="./img/icons.svg#icon-d-square"></use>
+                </svg>
+                <p class="nav-text">Product</p>
+                <svg width="16" height="16" class="arrow-icons">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="link-list-items active">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons active">
+                  <use href="./img/icons.svg#icon-user"></use>
+                </svg>
+                <p class="nav-text active">Customers</p>
+                <svg width="16" height="16" class="arrow-icons active">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="link-list-items">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons">
+                  <use href="./img/icons.svg#icon-wallet"></use>
+                </svg>
+                <p class="nav-text">Income</p>
+                <svg width="16" height="16" class="arrow-icons">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="link-list-items">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons">
+                  <use href="./img/icons.svg#icon-promote"></use>
+                </svg>
+                <p class="nav-text">Promote</p>
+                <svg width="16" height="16" class="arrow-icons">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+            <li class="link-list-items">
+              <a href="#" class="nav-link link">
+                <svg width="24" height="24" class="main-icons">
+                  <use href="./img/icons.svg#icon-help"></use>
+                </svg>
+                <p class="nav-text">Help</p>
+                <svg width="16" height="16" class="arrow-icons">
+                  <use href="./img/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="user">
+          <img src="./img/avatar.png" alt="avatar" class="avatar" />
+          <div class="user-wrap">
+            <p class="user-name">Evano</p>
+            <p class="user-job">Project Manager</p>
+          </div>
         </div>
-        </main>
+      </aside>
+      <main>
+        <div class="main-container">
+          <h2 class="greetings">Hello Evano 👋🏼,</h2>
+          <div class="main-wrap">
+            <div class="table-header">
+              <div class="table-name-wrap">
+                <h3 class="customers-title">All Customers</h3>
+                <button class="active-text" onclick="toggleMembers()">
+                  Active Members
+                </button>
+              </div>
+              <div class="search-wrap">
+                <input
+                  type="text"
+                  class="search"
+                  placeholder="Search"
+                  oninput="updateTable()"
+                />
+                <svg width="24" height="24" class="search-icon">
+                  <use href="./img/icons.svg#icon-search"></use>
+                </svg>
+              </div>
+            </div>
+            <div class="table">
+              <table id="customers">
+                <thead class="customers-thead">
+                  <tr>
+                    <th>Customer Name</th>
+                    <th>Company</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Country</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody class="customers-tbody"></tbody>
+              </table>
+            </div>
+            <div class="pagination-wrap">
+                <p class="pagination-text">Showing data 1 to 8 of  256K entries</p>
+                <ul class="pagination-list">
+                    <li class="pagination-item prev">
+                        <a href="#" class="pagination-link">&#60;</a>
+                    </li>
+                    <li class="pagination-item "><a href="#" class="pagination-link active">1</a></li>
+                    <li class="pagination-item"><a href="#" class="pagination-link">2</a></li>
+                    <li class="pagination-item"><a href="#" class="pagination-link">3</a></li>
+                    <li class="pagination-item"><a href="#" class="pagination-link">4</a></li>
+                    <li class="pagination-dots">...</li>
+                    <li class="pagination-item"><a href="#" class="pagination-link">40</a></li>
+                    <li class="pagination-item next"><a href="#" class="pagination-link">&#62;</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </main>
     </div>
 
     <script src="./js/data.js"></script>
     <script src="./js/index.js"></script>
-</body>
+  </body>
 </html>
