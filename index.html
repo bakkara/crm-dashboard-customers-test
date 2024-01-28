@@ -49,11 +49,11 @@
               </a>
             </li>
             <li class="link-list-items active">
-              <a href="#" class="nav-link link">
+              <a href="#" class="nav-link active link">
                 <svg width="24" height="24" class="main-icons active">
                   <use href="./img/icons.svg#icon-user"></use>
                 </svg>
-                <p class="nav-text active">Customers</p>
+                <p class="nav-text">Customers</p>
                 <svg width="16" height="16" class="arrow-icons active">
                   <use href="./img/icons.svg#icon-arrow-right"></use>
                 </svg>
@@ -141,19 +141,22 @@
               </table>
             </div>
             <div class="pagination-wrap">
-                <p class="pagination-text">Showing data 1 to 8 of  256K entries</p>
-                <ul class="pagination-list">
-                    <li class="pagination-item prev">
+              <p class="pagination-text">Showing data 1 to 8 of 256K entries</p>
+              <!-- Пагінація зроблена за допомогою JavaScript. Якщо додати ще клієнтів, або 
+                зменшити кількість клієнтів на сторінці, то можна буде побачити повноцінну роботу пагінації -->
+              <ul class="pagination-list">
+                <!-- Якщо робити пагінацію динамічно, в залежності від кількості сторінок, то цей код не потрібен -->
+                <!-- <li class="pagination-item prev">
                         <a href="#" class="pagination-link">&#60;</a>
                     </li>
-                    <li class="pagination-item "><a href="#" class="pagination-link active">1</a></li>
+                    <li class="pagination-item"><a class="pagination-link active" href="#" >1</a></li>
                     <li class="pagination-item"><a href="#" class="pagination-link">2</a></li>
                     <li class="pagination-item"><a href="#" class="pagination-link">3</a></li>
                     <li class="pagination-item"><a href="#" class="pagination-link">4</a></li>
                     <li class="pagination-dots">...</li>
                     <li class="pagination-item"><a href="#" class="pagination-link">40</a></li>
-                    <li class="pagination-item next"><a href="#" class="pagination-link">&#62;</a></li>
-                </ul>
+                    <li class="pagination-item next"><a href="#" class="pagination-link">&#62;</a></li> -->
+              </ul>
             </div>
           </div>
         </div>

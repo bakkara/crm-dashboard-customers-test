@@ -1,47 +1,6 @@
-// let showAllMembers = true;
-// let currentPage = 1;
-// const recordsPerPage = 8;
-
-// function toggleMembers() {
-//   showAllMembers = !showAllMembers;
-//   updateTable();
-// }
-
-//  function updateTable() {
-//     const filterStatus = showAllMembers ? null : 'Active';
-//     const searchValue = $('.search').val().toLowerCase();
-  
-//     const filteredCustomers = customers.filter(customer =>
-//       (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) &&
-//       (customer.name.toLowerCase().includes(searchValue))
-//     );
-  
-//     addRowsToTable(filteredCustomers);
-//   }
-
-//   function addRowsToTable(filteredCustomers) {
-//     const table = $('#customers');
-//     table.find('tbody').empty();
-    
-//     filteredCustomers.forEach(customer => {
-//       const row = $('<tr>');
-//       for (const key in customer) {
-//         let content = customer[key];
-//         if (key.toLowerCase() === 'status') {
-//           content = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
-//         }
-//         row.append($('<td>').html(content));
-//       }
-//       table.append(row);
-//     });
-//   }
-
-// $(document).ready(() => {
-//   updateTable();
-// });
 let showAllMembers = true;
 let currentPage = 1;
-const recordsPerPage = 6;
+const recordsPerPage = 8;
 
 function toggleMembers() {
   showAllMembers = !showAllMembers;
@@ -49,14 +8,14 @@ function toggleMembers() {
 }
 
 function updateTable() {
-  const filterStatus = showAllMembers ? null : 'Active';
-  const searchValue = $('.search').val().toLowerCase();
+  const filterStatus = showAllMembers ? null : "Active";
+  const searchValue = $(".search").val().toLowerCase();
 
-  const filteredCustomers = customers.filter(customer =>
-    (!filterStatus || customer.status.toLowerCase() === filterStatus.toLowerCase()) &&
-    (customer.name.toLowerCase().includes(searchValue))
+  const filteredCustomers = filterCustomers(
+    customers,
+    filterStatus,
+    searchValue
   );
-
   const totalRecords = filteredCustomers.length;
   const totalPages = Math.ceil(totalRecords / recordsPerPage);
 
@@ -71,64 +30,90 @@ function renderTable(filteredCustomers, page) {
 
   addRowsToTable(currentRecords);
 
-  const paginationText = `Showing data ${startIndex + 1} to ${startIndex + currentRecords.length} of ${filteredCustomers.length} entries`;
-  $('.pagination-text').text(paginationText);
+  const paginationText = `Showing data ${startIndex + 1} to ${
+    startIndex + currentRecords.length
+  } of ${filteredCustomers.length} entries`;
+  $(".pagination-text").text(paginationText);
 }
 
 function addRowsToTable(filteredCustomers) {
-  const tableBody = $('#customers tbody');
+  const tableBody = $("#customers tbody");
   tableBody.empty();
 
-  filteredCustomers.forEach(customer => {
-    const row = $('<tr>');
+  filteredCustomers.forEach((customer) => {
+    const row = $("<tr>");
     for (const key in customer) {
       let content = customer[key];
-      if (key.toLowerCase() === 'status') {
-        content = `<div class="status-div ${customer[key].toLowerCase()}">${customer[key]}</div>`;
+      if (key.toLowerCase() === "status") {
+        content = `<div class="status-div ${customer[key].toLowerCase()}">${
+          customer[key]
+        }</div>`;
       }
-      row.append($('<td>').html(content));
+      row.append($("<td>").html(content));
     }
     tableBody.append(row);
   });
 }
 
 function renderPagination(totalPages) {
-  const paginationList = $('.pagination-list');
+  const paginationList = $(".pagination-list");
   paginationList.empty();
 
-  const prevItem = $('<li class="pagination-item prev"><a href="#">&#60;</a></li>');
-  const nextItem = $('<li class="pagination-item next"><a href="#">&#62;</a></li>');
+  const prevItem = createPaginationItem("prev", "&#60;");
+  const nextItem = createPaginationItem("next", "&#62;");
 
-  prevItem.click(() => {
-    if (currentPage > 1) {
-      currentPage--;
-      updateTable();
-    }
-  });
-
-  nextItem.click(() => {
-    if (currentPage < totalPages) {
-      currentPage++;
-      updateTable();
-    }
-  });
+  prevItem.click(() => updatePage(-1));
+  nextItem.click(() => updatePage(1));
 
   paginationList.append(prevItem);
 
-  for (let i = 1; i <= totalPages; i++) {
-    const listItem = $('<li class="pagination-item">');
-    const link = $(`<a href="#">${i}</a>`);
+  const maxVisiblePages = 5;
+  const maxVisiblePagesHalf = Math.floor(maxVisiblePages / 2);
 
-    listItem.append(link);
-    paginationList.append(listItem);
-
-    link.click(() => {
-      currentPage = i;
-      updateTable();
-    });
+  if (totalPages <= maxVisiblePages) {
+    renderPageLinks(1, totalPages);
+  } else {
+    renderPageLinks(1, maxVisiblePagesHalf);
+    paginationList.append('<li class="pagination-dots">...</li>');
+    renderPageLinks(totalPages - maxVisiblePagesHalf + 1, totalPages);
   }
 
   paginationList.append(nextItem);
+
+  function createPaginationItem(className, content) {
+    return $(
+      `<li class="pagination-item ${className}"><a href="#" class="pagination-link">${content}</a></li>`
+    );
+  }
+
+  function updatePage(offset) {
+    if (currentPage + offset >= 1 && currentPage + offset <= totalPages) {
+      currentPage += offset;
+      updateTable();
+    }
+  }
+
+  function renderPageLinks(start, end) {
+    for (let i = start; i <= end; i++) {
+      const listItem = $('<li class="pagination-item">');
+      const link = $(`<a href="#" class="pagination-link">${i}</a>`);
+      if (i === currentPage) {
+        link.addClass("active");
+      }
+      listItem.append(link);
+      paginationList.append(listItem);
+
+      link.click(() => updatePage(i - currentPage));
+    }
+  }
+}
+
+function filterCustomers(customers, status, searchValue) {
+  return customers.filter(
+    (customer) =>
+      (!status || customer.status.toLowerCase() === status.toLowerCase()) &&
+      customer.name.toLowerCase().includes(searchValue)
+  );
 }
 
 $(document).ready(() => {
