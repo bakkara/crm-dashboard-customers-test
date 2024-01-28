@@ -119,3 +119,17 @@ function filterCustomers(customers, status, searchValue) {
 $(document).ready(() => {
   updateTable();
 });
+
+
+$(function () {
+  // Show/hide blocks
+  $('.nav-link').on('click', function (e) {
+    e.preventDefault();
+    const id = $(this).attr('href');
+    $('.nav-link').removeClass('active');
+    $(this).addClass('active');
+
+    $('.main-wrap > div').hide();
+    $(id).show();
+  });
+});

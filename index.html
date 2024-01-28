@@ -27,7 +27,7 @@
         <nav class="nav">
           <ul class="link-list list">
             <li class="link-list-items">
-              <a href="#" class="nav-link link">
+              <a href="#dashboard-block" class="nav-link link">
                 <svg width="24" height="24" class="main-icons">
                   <use href="./img/icons.svg#icon-key"></use>
                 </svg>
@@ -38,7 +38,7 @@
               </a>
             </li>
             <li class="link-list-items">
-              <a href="#" class="nav-link link">
+              <a href="#product-block" class="nav-link link">
                 <svg width="24" height="24" class="main-icons">
                   <use href="./img/icons.svg#icon-d-square"></use>
                 </svg>
@@ -49,7 +49,7 @@
               </a>
             </li>
             <li class="link-list-items active">
-              <a href="#" class="nav-link active link">
+              <a href="#customers-block" class="nav-link active link">
                 <svg width="24" height="24" class="main-icons active">
                   <use href="./img/icons.svg#icon-user"></use>
                 </svg>
@@ -60,7 +60,7 @@
               </a>
             </li>
             <li class="link-list-items">
-              <a href="#" class="nav-link link">
+              <a href="#income-block" class="nav-link link">
                 <svg width="24" height="24" class="main-icons">
                   <use href="./img/icons.svg#icon-wallet"></use>
                 </svg>
@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="link-list-items">
-              <a href="#" class="nav-link link">
+              <a href="#promote-block" class="nav-link link">
                 <svg width="24" height="24" class="main-icons">
                   <use href="./img/icons.svg#icon-promote"></use>
                 </svg>
@@ -82,7 +82,7 @@
               </a>
             </li>
             <li class="link-list-items">
-              <a href="#" class="nav-link link">
+              <a href="#help-block" class="nav-link link">
                 <svg width="24" height="24" class="main-icons">
                   <use href="./img/icons.svg#icon-help"></use>
                 </svg>
@@ -106,47 +106,54 @@
         <div class="main-container">
           <h2 class="greetings">Hello Evano 👋🏼,</h2>
           <div class="main-wrap">
-            <div class="table-header">
-              <div class="table-name-wrap">
-                <h3 class="customers-title">All Customers</h3>
-                <button class="active-text" onclick="toggleMembers()">
-                  Active Members
-                </button>
-              </div>
-              <div class="search-wrap">
-                <input
-                  type="text"
-                  class="search"
-                  placeholder="Search"
-                  oninput="updateTable()"
-                />
-                <svg width="24" height="24" class="search-icon">
-                  <use href="./img/icons.svg#icon-search"></use>
-                </svg>
-              </div>
+            <div id="dashboard-block" style="display: none;">
+              <h3 class="customers-title">Dashboard</h3>
             </div>
-            <div class="table">
-              <table id="customers">
-                <thead class="customers-thead">
-                  <tr>
-                    <th>Customer Name</th>
-                    <th>Company</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Country</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody class="customers-tbody"></tbody>
-              </table>
-            </div>
-            <div class="pagination-wrap">
-              <p class="pagination-text">Showing data 1 to 8 of 256K entries</p>
-              <!-- Пагінація зроблена за допомогою JavaScript. Якщо додати ще клієнтів, або 
+            <div id="product-block" style="display: none;"><h3 class="customers-title">Product</h3></div>
+            <div id="customers-block">
+              <div class="table-header">
+                <div class="table-name-wrap">
+                  <h3 class="customers-title">All Customers</h3>
+                  <button class="active-text" onclick="toggleMembers()">
+                    Active Members
+                  </button>
+                </div>
+                <div class="search-wrap">
+                  <input
+                    type="text"
+                    class="search"
+                    placeholder="Search"
+                    oninput="updateTable()"
+                  />
+                  <svg width="24" height="24" class="search-icon">
+                    <use href="./img/icons.svg#icon-search"></use>
+                  </svg>
+                </div>
+              </div>
+              <div class="table">
+                <table id="customers">
+                  <thead class="customers-thead">
+                    <tr>
+                      <th>Customer Name</th>
+                      <th>Company</th>
+                      <th>Phone Number</th>
+                      <th>Email</th>
+                      <th>Country</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody class="customers-tbody"></tbody>
+                </table>
+              </div>
+              <div class="pagination-wrap">
+                <p class="pagination-text">
+                  Showing data 1 to 8 of 256K entries
+                </p>
+                <!-- Пагінація зроблена за допомогою JavaScript. Якщо додати ще клієнтів, або 
                 зменшити кількість клієнтів на сторінці, то можна буде побачити повноцінну роботу пагінації -->
-              <ul class="pagination-list">
-                <!-- Якщо робити пагінацію динамічно, в залежності від кількості сторінок, то цей код не потрібен -->
-                <!-- <li class="pagination-item prev">
+                <ul class="pagination-list">
+                  <!-- Якщо робити пагінацію динамічно, в залежності від кількості сторінок, то цей код не потрібен -->
+                  <!-- <li class="pagination-item prev">
                         <a href="#" class="pagination-link">&#60;</a>
                     </li>
                     <li class="pagination-item"><a class="pagination-link active" href="#" >1</a></li>
@@ -156,8 +163,12 @@
                     <li class="pagination-dots">...</li>
                     <li class="pagination-item"><a href="#" class="pagination-link">40</a></li>
                     <li class="pagination-item next"><a href="#" class="pagination-link">&#62;</a></li> -->
-              </ul>
+                </ul>
+              </div>
             </div>
+            <div id="income-block" style="display: none;"><h3 class="customers-title">Income</h3></div>
+            <div id="promote-block" style="display: none;"><h3 class="customers-title">Promote</h3></div>
+            <div id="help-block" style="display: none;"><h3 class="customers-title">Help</h3></div>
           </div>
         </div>
       </main>
