@@ -65,12 +65,15 @@ img {
   padding-right: 15px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   gap: 71px;
 }
 
 @media screen and (min-width: 768px) {
   .container {
     max-width: 768px;
+    gap: 30px;
+    flex-direction: row;
   }
 }
 @media screen and (min-width: 1440px) {
@@ -94,27 +97,54 @@ img {
 
 /* --- Aside--- */
 .aside-container {
-  padding-left: 28px;
-  padding-right: 28px;
-  padding-top: 36px;
-  max-width: 306px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: auto;
+  padding: 15px;
+  width: 100vw;
   background: #fff;
   box-shadow: 0px 10px 60px 0px rgba(226, 236, 249, 0.5);
+}
+
+.nav {
+  display: none;
 }
 
 .logo-link {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 65px;
 }
 
 .title {
   color: var(--color-black);
-  font-size: 26px;
+  font-size: 20px;
   font-weight: 600;
   line-height: normal;
   letter-spacing: 0.26px;
+}
+
+@media screen and (min-width: 768px) {
+  .aside-container {
+    display: block;
+    padding-left: 28px;
+    padding-right: 28px;
+    padding-top: 36px;
+    max-width: 306px;
+  }
+  .nav {
+    display: block;
+  }
+  .logo-link {
+    margin-bottom: 65px;
+  }
+  .title {  
+    font-size: 26px;
+  }
+  .link-list {
+    margin-bottom: 600px;
+  }
 }
 
 .version {
@@ -130,11 +160,9 @@ img {
   flex-direction: column;
   gap: 18px;
   width: 250px;
-  margin-bottom: 600px;
 }
 
-.link-list-items {
-}
+
 
 .nav-link {
   display: flex;
@@ -173,7 +201,16 @@ img {
 .user {
   display: flex;
   gap: 12px;
-  margin-bottom: 78px;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .user {
+    margin-bottom: 78px;
+  }
+  .icon-menu {
+    display: none;
+  }
 }
 
 .avatar {
@@ -198,6 +235,32 @@ img {
   letter-spacing: 0.12px;
 }
 
+.icon-menu {
+  stroke: #000;
+}
+/* ----Mobile-nav---- */
+.mobile-menu-open-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.mobile-menu-container {
+  position: fixed;
+  top: 80px;
+  left: 0;
+  padding-left: 35px;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+  overflow-y: scroll;
+  z-index: 999;
+  transform: translateX(100%);
+  transition: transform var(--transition);
+}
+
+.mobile-menu-container.is-open {
+  transform: translateX(0);
+}
 /* --- Main Container--- */
 
 .main-container {

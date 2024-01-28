@@ -94,13 +94,20 @@
             </li>
           </ul>
         </nav>
+
         <div class="user">
           <img src="./img/avatar.png" alt="avatar" class="avatar" />
           <div class="user-wrap">
             <p class="user-name">Evano</p>
             <p class="user-job">Project Manager</p>
           </div>
+          <button type="button" class="mobile-menu-open-btn">
+            <svg width="16" height="16" class="icon-menu">
+              <use href="./img/icons.svg#icon-menu"></use>
+            </svg>
+          </button>
         </div>
+       
       </aside>
       <main>
         <div class="main-container">
@@ -173,6 +180,78 @@
         </div>
       </main>
     </div>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-menu-container">
+      <ul class="link-list list">
+        <li class="link-list-items">
+          <a href="#dashboard-block" class="nav-link link">
+            <svg width="24" height="24" class="main-icons">
+              <use href="./img/icons.svg#icon-key"></use>
+            </svg>
+            <p class="nav-text">Dashboard</p>
+            <svg width="16" height="16" class="arrow-icons">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="link-list-items">
+          <a href="#product-block" class="nav-link link">
+            <svg width="24" height="24" class="main-icons">
+              <use href="./img/icons.svg#icon-d-square"></use>
+            </svg>
+            <p class="nav-text">Product</p>
+            <svg width="16" height="16" class="arrow-icons">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="link-list-items active">
+          <a href="#customers-block" class="nav-link active link">
+            <svg width="24" height="24" class="main-icons active">
+              <use href="./img/icons.svg#icon-user"></use>
+            </svg>
+            <p class="nav-text">Customers</p>
+            <svg width="16" height="16" class="arrow-icons active">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="link-list-items">
+          <a href="#income-block" class="nav-link link">
+            <svg width="24" height="24" class="main-icons">
+              <use href="./img/icons.svg#icon-wallet"></use>
+            </svg>
+            <p class="nav-text">Income</p>
+            <svg width="16" height="16" class="arrow-icons">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="link-list-items">
+          <a href="#promote-block" class="nav-link link">
+            <svg width="24" height="24" class="main-icons">
+              <use href="./img/icons.svg#icon-promote"></use>
+            </svg>
+            <p class="nav-text">Promote</p>
+            <svg width="16" height="16" class="arrow-icons">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+        <li class="link-list-items">
+          <a href="#help-block" class="nav-link link">
+            <svg width="24" height="24" class="main-icons">
+              <use href="./img/icons.svg#icon-help"></use>
+            </svg>
+            <p class="nav-text">Help</p>
+            <svg width="16" height="16" class="arrow-icons">
+              <use href="./img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </nav>
 
     <script src="./js/data.js"></script>
     <script src="./js/index.js"></script>

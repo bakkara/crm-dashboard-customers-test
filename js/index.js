@@ -8,8 +8,8 @@ function toggleMembers() {
 }
 
 function updateTable() {
-  const filterStatus = showAllMembers ? null : "Active";
-  const searchValue = $(".search").val().toLowerCase();
+  const filterStatus = showAllMembers ? null : 'Active';
+  const searchValue = $('.search').val().toLowerCase();
 
   const filteredCustomers = filterCustomers(
     customers,
@@ -33,34 +33,34 @@ function renderTable(filteredCustomers, page) {
   const paginationText = `Showing data ${startIndex + 1} to ${
     startIndex + currentRecords.length
   } of ${filteredCustomers.length} entries`;
-  $(".pagination-text").text(paginationText);
+  $('.pagination-text').text(paginationText);
 }
 
 function addRowsToTable(filteredCustomers) {
-  const tableBody = $("#customers tbody");
+  const tableBody = $('#customers tbody');
   tableBody.empty();
 
-  filteredCustomers.forEach((customer) => {
-    const row = $("<tr>");
+  filteredCustomers.forEach(customer => {
+    const row = $('<tr>');
     for (const key in customer) {
       let content = customer[key];
-      if (key.toLowerCase() === "status") {
+      if (key.toLowerCase() === 'status') {
         content = `<div class="status-div ${customer[key].toLowerCase()}">${
           customer[key]
         }</div>`;
       }
-      row.append($("<td>").html(content));
+      row.append($('<td>').html(content));
     }
     tableBody.append(row);
   });
 }
 
 function renderPagination(totalPages) {
-  const paginationList = $(".pagination-list");
+  const paginationList = $('.pagination-list');
   paginationList.empty();
 
-  const prevItem = createPaginationItem("prev", "&#60;");
-  const nextItem = createPaginationItem("next", "&#62;");
+  const prevItem = createPaginationItem('prev', '&#60;');
+  const nextItem = createPaginationItem('next', '&#62;');
 
   prevItem.click(() => updatePage(-1));
   nextItem.click(() => updatePage(1));
@@ -98,7 +98,7 @@ function renderPagination(totalPages) {
       const listItem = $('<li class="pagination-item">');
       const link = $(`<a href="#" class="pagination-link">${i}</a>`);
       if (i === currentPage) {
-        link.addClass("active");
+        link.addClass('active');
       }
       listItem.append(link);
       paginationList.append(listItem);
@@ -110,7 +110,7 @@ function renderPagination(totalPages) {
 
 function filterCustomers(customers, status, searchValue) {
   return customers.filter(
-    (customer) =>
+    customer =>
       (!status || customer.status.toLowerCase() === status.toLowerCase()) &&
       customer.name.toLowerCase().includes(searchValue)
   );
@@ -120,9 +120,7 @@ $(document).ready(() => {
   updateTable();
 });
 
-
 $(function () {
-  // Show/hide blocks
   $('.nav-link').on('click', function (e) {
     e.preventDefault();
     const id = $(this).attr('href');
@@ -131,5 +129,21 @@ $(function () {
 
     $('.main-wrap > div').hide();
     $(id).show();
+
+    $('.mobile-menu-container').removeClass('is-open');
+    $('.icon-menu use').attr('href', './img/icons.svg#icon-menu');
+  });
+
+  $('.mobile-menu-open-btn').on('click', function () {
+    $('.mobile-menu-container').toggleClass('is-open');
+
+    const iconMenu = $('.icon-menu use');
+    const currentIcon = iconMenu.attr('href');
+
+    if (currentIcon === './img/icons.svg#icon-menu') {
+      iconMenu.attr('href', './img/icons.svg#icon-close');
+    } else {
+      iconMenu.attr('href', './img/icons.svg#icon-menu');
+    }
   });
 });
